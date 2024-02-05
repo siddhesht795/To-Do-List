@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz@9..144&family=Proza+Libre&display=swap');
+
+body {
+	margin: 0;
+	box-sizing: border-box;
+	background-image: url(bgImage.jpg);
+	background-attachment: fixed;
+}
+
+header {
+	margin: 0;
+	height: 13vh;
+	text-align: center;
+	background: linear-gradient(to bottom, #000000b8, #00000000);
+	color: #efff00;
+	font-size: 1.5vw;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Fraunces', serif;
+}
+
+header h1 {
+	margin: 0;
+	padding: 0% 6%;
+    background-color: #ff0000e0;
+    border-radius: 30px;
+}
+
+.add--container {
+	display: flex;
+    justify-content: center;
+    margin: auto;
+    padding: 4vw 0vw;
+    margin: 3vw 20vw;
+    background-color: #f4941abd;
+    border-radius: 40px;
+    box-shadow: 0px 0px 50px black;
+}
+
+.add--container input {
+	padding: 1%;
+	width: 30vw;
+	text-align: left;
+	font-size: 1.3vw;
+	margin: 0% 5%;
+	border-radius: 20px;
+	font-family: 'Kanit', sans-serif;
+}
+
+#addBtn {
+	padding: 0% 1.2%;
+    border-radius: 10px;
+    font-size: 1vw;
+    background-color: #ffff59f2;
+    color: red;
+	font-family: 'Kanit', sans-serif;
+}
+
+.todo--container {
+	display: flex;
+	justify-content: center;
+	/*align-items: center;*/
+	flex-wrap: wrap;
+}
+
+.taskDiv {
+	display: flex;
+	padding: 2vw 2vw;
+	margin: 2%;
+	border: 2px solid black;
+	width: 60vw;
+	background: linear-gradient(to right, rgb(255, 250, 95), rgb(255 33 33));
+	border-radius: 25px;
+	transition: background 2s ease;
+}
+
+.todo--container button{
+	position: sticky;
+    left: 74vw;
+    padding: 1%;
+    border-radius: 11px;
+    background-color: red;
+    color: #fefb58;
+    font-weight: 900;
+    height: 3.5vw;
+    margin: auto;
+    border: transparent;
+    box-shadow: 0px 0px 5px black;
+}
+
+.todo--container label{
+	display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    position: sticky;
+    left: 60.5vw;
+    font-size: 1.2vw;
+}
+
+.todo--container input{
+	position: sticky;
+    left: 69vw;
+    width: 1.3vw;
+}
+
+.textDiv {
+	width: 38vw;
+    font-family: 'Proza Libre', sans-serif;
+    font-weight: 600;
+    font-size: 1vw;
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    overflow-wrap: anywhere;
+    justify-content: center;
+    text-align: center;
+}
+
+
+
+/* MEDIA QUERIES AT 1250px */
+@media only screen and (max-width: 1250px){
+	.todo--container button{
+	    left: 71vw;
+	    font-size: 0.9vw;
+	}
+	
+	.todo--container label{
+		left: 57.5vw;
+	}
+	
+	.todo--container input{
+		left: 67vw;
+	}
+	
+	.textDiv {
+		width: 36vw;
+	}	
+}
+
+
+/* MEDIA QUERIES AT 850px */
+@media (max-width: 850px){
+	.add--container {
+	    margin: 3vw 20vh;
+	    border-radius: 35px;
+	}
+
+	.add--container input {
+    	width: 29vw;
+    	font-size: 1.6vw;
+	}
+
+	#addBtn {
+	    padding: 0% 1.6%;
+	    font-size: 1.25vw;
+	}
+}
