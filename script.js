@@ -1,8 +1,37 @@
 const addBtn = document.getElementById("addBtn");
 const toDoList = document.getElementsByClassName("todo--container")[0];
 const task = document.getElementsByTagName('input')[0];
+let header = document.getElementById("header");
+var time;
 
-function handleClicks() {
+let url = "http://worldtimeapi.org/api/timezone/Asia/Kolkata";
+
+//Function to fetch data
+function fetchDate(){
+	fetch(url)
+		.then(response => {
+			return response.json()
+		}) .then(data => {
+			time = data.datetime.slice(11,19);
+		})
+}
+
+setInterval(fetchDate, 1000);
+
+//Date and Time Div
+let dtDiv = document.createElement("div");
+let dtData = document.createElement("p");
+
+header.append(dtDiv);
+dtDiv.append(dtData);//for Date
+dtDiv.append(dtData);//for Time
+
+setInterval(()=>{
+	dtData.innerText = `Time:${time}`;
+}, 1);
+
+//Function to handle
+function addBtnClick() {
 	//Used if else to check for empty strings
 	if(task.value.trim() !== ""){
 		const newDiv = document.createElement("div");
@@ -20,19 +49,19 @@ function handleClicks() {
 		isDoneLabel.innerText = "Task Completed:"//Setting innerText of label
 
 		const textDiv = document.createElement("div");//Making new div for the text of the task
-        textDiv.className = "textDiv";
-        textDiv.innerText = task.value;
+        	textDiv.className = "textDiv";
+        	textDiv.innerText = task.value;
 
-        newDiv.className = "taskDiv";//Adding id attr to the div containg the task
+        	newDiv.className = "taskDiv";//Adding id attr to the div containg the task
 
-        newDiv.appendChild(textDiv);// Appending the new div with class "textDiv" to the newDiv
+        	newDiv.append(textDiv);// Appending the new div with class "textDiv" to the newDiv
 		
-		toDoList.appendChild(newDiv);//Appending new divs for new tasks
+		toDoList.append(newDiv);//Appending new divs for new tasks
 
 		//Appending content inside the newDiv(task div)
-		newDiv.appendChild(isDoneLabel);
-		newDiv.appendChild(isDone);
-		newDiv.appendChild(remBtn);
+		newDiv.append(isDoneLabel);
+		newDiv.append(isDone);
+		newDiv.append(remBtn);
 
 		remBtn.innerText = "Remove Task"
 		task.value = "";
@@ -62,13 +91,4 @@ function handleClicks() {
 
 }
 
-addBtn.addEventListener("click", handleClicks);
-
-let url = "http://worldtimeapi.org/api/timezone/Asia/Kolkata";
-
-fetch(url)
-	.then(response => {
-		return response.json()
-	}) .then(data => {
-		console.log(data.datetime)
-	})
+addBtn.addEventListener("click", addBtnClick);
