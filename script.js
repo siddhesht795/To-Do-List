@@ -4,7 +4,7 @@ const task = document.getElementsByTagName('input')[0];
 let header = document.getElementById("header");
 var time;
 
-let url = "http://worldtimeapi.org/api/timezone/Asia/Kolkata";
+let url = "https://worldtimeapi.org/api/timezone/Asia/Kolkata";
 
 //Function to fetch data
 function fetchDate(){
