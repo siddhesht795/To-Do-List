@@ -44,7 +44,7 @@ setInterval(()=>{
 	seconds = (seconds < 10) ? "0" + seconds : seconds;
 
 	timeData.innerText = `Time:  ${hours} : ${minutes} : ${seconds}`;
-}, 1000);
+}, 1);
 
 //Function to handle
 function addBtnClick() {
