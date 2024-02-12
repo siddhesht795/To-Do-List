@@ -22,10 +22,21 @@ header {
 }
 
 header h1 {
-	margin: 0;
+	margin-left: 10vw;
 	padding: 0% 6%;
     background-color: #ff0000e0;
     border-radius: 30px;
+}
+
+.dtDiv {
+	background: white;
+    color: black;
+    padding: 0vw 0.6vw;
+    border-radius: 29px;
+    border: 2px solid black;
+    font-size: 0.8vw;
+    position: relative;
+    left: 23vw;
 }
 
 .add--container {
