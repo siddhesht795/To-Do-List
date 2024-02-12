@@ -7,10 +7,13 @@ let tempdt = new Date();
 var time = `Time:  ${tempdt.getHours()} : ${tempdt.getMinutes()} : ${tempdt.getSeconds()}`;
 
 
+
 //Date and Time Div
 let dtDiv = document.createElement("div");
 let dateData = document.createElement("p");
+dateData.className = "dateData";
 let timeData = document.createElement("p");
+timeData.className = "timeData";
 
 dtDiv.className = "dtDiv";
 
@@ -18,7 +21,7 @@ header.append(dtDiv);
 dtDiv.append(dateData);//for Date
 dtDiv.append(timeData);//for Time
 
-setInterval(()=>{
+function updateDateTime() {
 	//creating date object
 	let dt = new Date();
 
@@ -44,7 +47,11 @@ setInterval(()=>{
 	seconds = (seconds < 10) ? "0" + seconds : seconds;
 
 	timeData.innerText = `Time:  ${hours} : ${minutes} : ${seconds}`;
-}, 1);
+};
+
+updateDateTime();
+
+setInterval(updateDateTime,1000);
 
 //Function to handle
 function addBtnClick() {
@@ -65,12 +72,12 @@ function addBtnClick() {
 		isDoneLabel.innerText = "Task Completed:"//Setting innerText of label
 
 		const textDiv = document.createElement("div");//Making new div for the text of the task
-        textDiv.className = "textDiv";
-        textDiv.innerText = task.value;
+        	textDiv.className = "textDiv";
+        	textDiv.innerText = task.value;
+	
+        	newDiv.className = "taskDiv";//Adding id attr to the div containg the task
 
-        newDiv.className = "taskDiv";//Adding id attr to the div containg the task
-
-        newDiv.append(textDiv);// Appending the new div with class "textDiv" to the newDiv
+        	newDiv.append(textDiv);// Appending the new div with class "textDiv" to the newDiv
 		
 		toDoList.append(newDiv);//Appending new divs for new tasks
 
