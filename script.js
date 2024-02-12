@@ -2,33 +2,49 @@ const addBtn = document.getElementById("addBtn");
 const toDoList = document.getElementsByClassName("todo--container")[0];
 const task = document.getElementsByTagName('input')[0];
 let header = document.getElementById("header");
-var time;
 
-let url = "https://worldtimeapi.org/api/timezone/Asia/Kolkata";
+let tempdt = new Date();
+var time = `Time:  ${tempdt.getHours()} : ${tempdt.getMinutes()} : ${tempdt.getSeconds()}`;
 
-//Function to fetch data
-function fetchDate(){
-	fetch(url)
-		.then(response => {
-			return response.json()
-		}) .then(data => {
-			time = data.datetime.slice(11,19);
-		})
-}
-
-setInterval(fetchDate, 1000);
 
 //Date and Time Div
 let dtDiv = document.createElement("div");
-let dtData = document.createElement("p");
+let dateData = document.createElement("p");
+let timeData = document.createElement("p");
+
+dtDiv.className = "dtDiv";
 
 header.append(dtDiv);
-dtDiv.append(dtData);//for Date
-dtDiv.append(dtData);//for Time
+dtDiv.append(dateData);//for Date
+dtDiv.append(timeData);//for Time
 
 setInterval(()=>{
-	dtData.innerText = `Time:${time}`;
-}, 1);
+	//creating date object
+	let dt = new Date();
+
+	//Date
+	let date = dt.getDate();
+	let month = dt.getMonth() + 1;
+	let year = dt.getFullYear()
+
+	date = (date < 10) ? "0" + date : date;
+	month = (month < 10) ? "0" + month : month;
+	year = (year < 10) ? "0" + year : year;
+
+	dateData.innerText = `Date:  ${date} / ${month} / ${year}`;
+	console.log(month);
+
+	//Time
+	let hours = dt.getHours();
+	let minutes = dt.getMinutes();
+	let seconds = dt.getSeconds();
+
+	hours = (hours < 10) ? "0" + hours : hours;
+	minutes = (minutes < 10) ? "0" + minutes : minutes;
+	seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+	timeData.innerText = `Time:  ${hours} : ${minutes} : ${seconds}`;
+}, 1000);
 
 //Function to handle
 function addBtnClick() {
@@ -49,12 +65,12 @@ function addBtnClick() {
 		isDoneLabel.innerText = "Task Completed:"//Setting innerText of label
 
 		const textDiv = document.createElement("div");//Making new div for the text of the task
-        	textDiv.className = "textDiv";
-        	textDiv.innerText = task.value;
+        textDiv.className = "textDiv";
+        textDiv.innerText = task.value;
 
-        	newDiv.className = "taskDiv";//Adding id attr to the div containg the task
+        newDiv.className = "taskDiv";//Adding id attr to the div containg the task
 
-        	newDiv.append(textDiv);// Appending the new div with class "textDiv" to the newDiv
+        newDiv.append(textDiv);// Appending the new div with class "textDiv" to the newDiv
 		
 		toDoList.append(newDiv);//Appending new divs for new tasks
 
